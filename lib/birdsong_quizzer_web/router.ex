@@ -20,7 +20,9 @@ defmodule BirdsongQuizzerWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  # scope "/api", BirdsongQuizzerWeb do
-  #   pipe_through :api
-  # end
+  scope "/api", BirdsongQuizzerWeb do
+    pipe_through :api
+
+    get "/songs", SongController, :index
+  end
 end
