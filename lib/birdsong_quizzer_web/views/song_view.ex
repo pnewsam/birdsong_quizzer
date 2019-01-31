@@ -11,10 +11,12 @@ defmodule BirdsongQuizzerWeb.SongView do
   end
 
   def render("song.json", %{song: song}) do
-    %{id: song.id,
+    %{
+      id: song.id,
       genus: song.genus,
       species: song.species,
       file_url: song.file_url,
-      common_name: song.common_name}
+      common_name: song.common_name
+    }
   end
 end
