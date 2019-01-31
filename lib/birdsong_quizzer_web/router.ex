@@ -10,6 +10,7 @@ defmodule BirdsongQuizzerWeb.Router do
   end
 
   pipeline :api do
+    plug CORSPlug, origin: "http://127.0.0.1:8081"
     plug :accepts, ["json"]
   end
 
@@ -24,5 +25,6 @@ defmodule BirdsongQuizzerWeb.Router do
     pipe_through :api
 
     get "/songs", SongController, :index
+    get "/quizzes", QuizController, :index
   end
 end
