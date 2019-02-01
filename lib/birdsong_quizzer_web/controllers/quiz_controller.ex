@@ -6,8 +6,8 @@ defmodule BirdsongQuizzerWeb.QuizController do
 
   action_fallback BirdsongQuizzerWeb.FallbackController
 
-  def index(conn, _params) do
-    questions = BirdsongQuizzer.QuizFormulator.perform()
+  def index(conn, params) do
+    questions = BirdsongQuizzer.QuizFormulator.perform(params)
     render(conn, "index.json", questions: questions)
   end
 
