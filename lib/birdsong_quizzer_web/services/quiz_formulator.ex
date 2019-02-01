@@ -1,11 +1,11 @@
 defmodule BirdsongQuizzer.QuizFormulator do
-  def perform do
-    question_groups()
+  def perform(params) do
+    question_groups(params)
     |> Enum.map(fn {songs, index} -> question(songs, index) end)
   end
 
-  defp question_groups do
-    songs() |> Enum.chunk_every(4) |> Enum.with_index()
+  defp question_groups(params) do
+    songs(params) |> Enum.chunk_every(4) |> Enum.with_index()
   end
 
   defp question(songs, index) do
@@ -25,8 +25,8 @@ defmodule BirdsongQuizzer.QuizFormulator do
     %{commonName: song.common_name, isCorrect: correct_song_id == song.id}
   end
 
-  defp songs do
-    BirdsongQuizzer.XenocantoClient.perform()
+  defp songs(params) do
+    BirdsongQuizzer.XenocantoClient.perform(params)
   end
 
   defp formatted_song_url(song) do
